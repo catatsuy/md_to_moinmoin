@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require "md_to_moinmoin"
+
+File.open(ARGV[0], "r") do |f|
+  markdown = Redcarpet::Markdown.new(MdToMoinmoin::Moinmoin,
+    fenced_code_blocks: true,
+    hard_wrap: true
+  )
+
+  puts markdown.render(f.read)
+end
